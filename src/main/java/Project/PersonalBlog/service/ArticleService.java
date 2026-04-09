@@ -27,4 +27,12 @@ public class ArticleService {
     public void deleteArticle(Long id){
         articleRepository.deleteById(id);
     }
+
+    public Article updateArticle(Long id, Article updated){
+        Article existing = getArticleById(id);
+        existing.setTitle(updated.getTitle());
+        existing.setContent(updated.getContent());
+        existing.setStatus(updated.getStatus());
+        return articleRepository.save(existing);
+    }
 }

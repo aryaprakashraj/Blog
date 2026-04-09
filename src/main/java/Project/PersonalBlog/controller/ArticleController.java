@@ -35,4 +35,9 @@ public class ArticleController {
         return ResponseEntity.noContent().build() ;
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article article){
+        return ResponseEntity.ok(articleService.updateArticle(id, article));
+    }
+
 }
