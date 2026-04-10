@@ -21,7 +21,10 @@ public class ArticleService {
     }
 
     public Article getArticleById(Long id){
-        return articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Article not found!"));
+        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Article not found!"));
+        article.setViewCount(article.getViewCount() + 1);
+        articleRepository.save(article);
+        return article ;
     }
 
     public void deleteArticle(Long id){
@@ -34,5 +37,9 @@ public class ArticleService {
         existing.setContent(updated.getContent());
         existing.setStatus(updated.getStatus());
         return articleRepository.save(existing);
+    }
+
+    public List<Article> getPublishedArticles(){
+        return articleRepository.findByStatus("PUBLISHED") ;
     }
 }

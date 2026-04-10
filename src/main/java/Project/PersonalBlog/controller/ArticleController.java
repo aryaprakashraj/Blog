@@ -19,25 +19,30 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.createArticle(article));
     }
 
-    @GetMapping
+    @GetMapping()
+    public ResponseEntity<List<Article>> getPublishedArticles(){
+        return ResponseEntity.ok(articleService.getPublishedArticles()) ;
+    }
+    @GetMapping("/all")
     public ResponseEntity<List<Article>> getAllArticles() {
         return ResponseEntity.ok(articleService.getAllArticles());
     }
 
-    @GetMapping("?{id}")
-    public ResponseEntity<Article> getArticleById(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<Article> getArticleById(@PathVariable("id") Long id){
         return ResponseEntity.ok(articleService.getArticleById(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteArticle(@PathVariable Long id){
+    public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id){
         articleService.deleteArticle(id);
         return ResponseEntity.noContent().build() ;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article article){
+    public ResponseEntity<Article> updateArticle(@PathVariable("id") Long id, @RequestBody Article article){
         return ResponseEntity.ok(articleService.updateArticle(id, article));
     }
+
 
 }
