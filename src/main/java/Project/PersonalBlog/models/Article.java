@@ -3,6 +3,8 @@ package Project.PersonalBlog.models;
 import jakarta.persistence.*;
 import lombok.Data ;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,6 +33,15 @@ public class Article {
         viewCount = 0 ;
         if (status == null) status = "DRAFT" ;
     }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "article_tags",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+
+    private List<Tag> tags = new ArrayList<>();
 
 
 }
