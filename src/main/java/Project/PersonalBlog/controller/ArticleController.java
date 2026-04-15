@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/articles")
@@ -44,5 +45,8 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.updateArticle(id, article));
     }
 
-
+    @PostMapping("/{id}/tags")
+    public ResponseEntity<Article> addTag(@PathVariable("id") Long id , @RequestBody Map<String , String> body){
+        return ResponseEntity.ok(articleService.addTagToArticle(id , body.get("name"))) ;
+    }
 }

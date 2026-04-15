@@ -9,6 +9,12 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> handleDuplicateKey(Exception ex) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(Map.of("error", "Tag already exists"));
+    }
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Map<String , String>> handleNotFound(RuntimeException ex){
         return ResponseEntity
