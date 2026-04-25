@@ -49,4 +49,9 @@ public class ArticleController {
     public ResponseEntity<Article> addTag(@PathVariable("id") Long id , @RequestBody Map<String , String> body){
         return ResponseEntity.ok(articleService.addTagToArticle(id , body.get("name"))) ;
     }
+
+    @DeleteMapping("/{id}/tags")
+    public ResponseEntity<Article> removeTag(@PathVariable("id") Long id , @RequestBody Map<String, String> body){
+        return ResponseEntity.ok(articleService.removeTagFromArticle(id, body.get("name"))) ;
+    }
 }

@@ -48,7 +48,15 @@ public class ArticleService {
     public Article addTagToArticle(Long articleId , String tagName){
         Article article = articleRepository.findById(articleId).orElseThrow(() -> new RuntimeException("Article not found"));
         Tag tag = tagService.getOrCreateTag(tagName) ;
-        article.getTags().add(tag) ;
+        if (!article.getTags().contains(tag)) article.getTags().add(tag) ;
         return articleRepository.save(article) ;
+    }
+
+    public Article removeTagFromArticle(Long articleId, String tagName){
+        Article article = articleRepository.findById(articleId)
+                .orElseThrow(() -> new RuntimeException("Article not found"));
+        Tag tag = tagService.getOrCreateTag(tagName);
+        article.getTags().remove(tag);
+        return articleRepository.save(article);
     }
 }
