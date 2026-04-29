@@ -52,7 +52,7 @@ public class ArticleService {
         return articleRepository.save(article) ;
     }
 
-    public Article removeTagFromArticle(Long articleId, String tagName){
+    public Article removeTagFromArticle(Long articleId, String tagName) {
         Article article = articleRepository.findById(articleId)
                 .orElseThrow(() -> new RuntimeException("Article not found"));
         Tag tag = tagService.getOrCreateTag(tagName);

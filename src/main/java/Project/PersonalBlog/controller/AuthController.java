@@ -1,12 +1,11 @@
 package Project.PersonalBlog.controller;
 
 import Project.PersonalBlog.config.JwtUtil;
+import Project.PersonalBlog.models.Article;
+import Project.PersonalBlog.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -16,6 +15,8 @@ import java.util.Map;
 public class AuthController {
 
     private final JwtUtil jwtUtil ;
+
+    private final ArticleService articleService ;
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String , String> body){
@@ -28,5 +29,10 @@ public class AuthController {
         }
 
         return ResponseEntity.status(401).body(Map.of("error" , "Invalid credentials")) ;
+    }
+
+    @DeleteMapping("/{id}/tags")
+    public ResponseEntity<Article> removeTag(@PathVariable("id") Long id, @RequestBody Map<String, String> body) {
+        return ResponseEntity.ok(articleService.removeTagFromArticle(id, body.get("name")));
     }
 }
