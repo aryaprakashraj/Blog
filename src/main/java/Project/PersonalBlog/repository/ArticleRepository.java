@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     List<Article> findByStatus(String status) ;
+    List<Article> findByStatusOrderByCreatedAtDesc(String status) ;
 }

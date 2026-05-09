@@ -18,6 +18,8 @@ public class Article {
 
     private String title ;
 
+    private LocalDateTime updatedAt ;
+
     @Column(columnDefinition = "TEXT")
     private String content ;
 
@@ -34,14 +36,9 @@ public class Article {
         if (status == null) status = "DRAFT" ;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "article_tags",
-            joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-
-    private List<Tag> tags = new ArrayList<>();
-
+    @PreUpdate
+    public void preUpdate(){
+        updatedAt = LocalDateTime.now() ;
+    }
 
 }
