@@ -1,0 +1,48 @@
+package com.aryaprakashraj.Blog.controller;
+
+import com.aryaprakashraj.Blog.models.Article;
+import com.aryaprakashraj.Blog.service.ArticleService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/articles")
+@RequiredArgsConstructor
+public class ArticleController {
+    private final ArticleService articleService ;
+
+    @PostMapping
+    public ResponseEntity<Article> createArticle(@RequestBody Article article){
+        return ResponseEntity.ok(articleService.createArticle(article));
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Article>> getPublishedArticles(){
+        return ResponseEntity.ok(articleService.getPublishedArticles()) ;
+    }
+    @GetMapping("/all")
+    public ResponseEntity<List<Article>> getAllArticles() {
+        return ResponseEntity.ok(articleService.getAllArticles());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Article> getArticleById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(articleService.getArticleById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id){
+        articleService.deleteArticle(id);
+        return ResponseEntity.noContent().build() ;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable("id") Long id, @RequestBody Article article){
+        return ResponseEntity.ok(articleService.updateArticle(id, article));
+    }
+
+}
