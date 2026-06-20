@@ -3,7 +3,6 @@ package Blog.controller;
 
 import Blog.models.Subscriber;
 import Blog.service.SubscriberService;
-import com.oracle.svm.core.annotate.Delete;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
