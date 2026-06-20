@@ -1,4 +1,4 @@
-package com.aryaprakashraj.Blog.models;
+package Blog.models;
 
 import jakarta.persistence.*;
 import lombok.Data ;

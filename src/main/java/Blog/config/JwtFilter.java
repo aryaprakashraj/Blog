@@ -1,7 +1,6 @@
-package com.aryaprakashraj.Blog.config;
+package Blog.config;
 
 
-import com.aryaprakashraj.Blog.config.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,13 +1,12 @@
-package com.aryaprakashraj.Blog.controller;
+package Blog.controller;
 
-import com.aryaprakashraj.Blog.models.Article;
-import com.aryaprakashraj.Blog.service.ArticleService;
+import Blog.models.Article;
+import Blog.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/articles")

@@ -1,4 +1,4 @@
-package com.aryaprakashraj.Blog.config;
+package Blog.config;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

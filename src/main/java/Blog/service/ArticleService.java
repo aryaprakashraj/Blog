@@ -1,6 +1,6 @@
-package com.aryaprakashraj.Blog.service;
-import com.aryaprakashraj.Blog.models.Article;
-import com.aryaprakashraj.Blog.repository.ArticleRepository;
+package Blog.service;
+import Blog.models.Article;
+import Blog.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

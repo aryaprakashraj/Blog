@@ -1,8 +1,7 @@
-package com.aryaprakashraj.Blog.controller;
+package Blog.controller;
 
-import com.aryaprakashraj.Blog.config.JwtUtil;
-import com.aryaprakashraj.Blog.models.Article;
-import com.aryaprakashraj.Blog.service.ArticleService;
+import Blog.config.JwtUtil;
+import Blog.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
-package com.aryaprakashraj.Blog.repository;
+package Blog.repository;
 
-import com.aryaprakashraj.Blog.models.Article ;
+import Blog.models.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
