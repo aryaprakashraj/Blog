@@ -21,6 +21,9 @@ public class Subscriber {
 
     @PrePersist
     public void prePersist(){
+        if (status == null) {
+            status = "Subscribed";
+        }
         subscribedAt = LocalDateTime.now() ;
     }
 
