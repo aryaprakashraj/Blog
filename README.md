@@ -1,4 +1,4 @@
-# arya.dev
+# Personal Blog + Newsletter Engine
 
 A personal blog and newsletter platform, built from scratch as the vehicle for learning backend development, starting from zero Spring Boot experience.
 
